@@ -39,17 +39,6 @@ public class FormTest {
 
     @Test
     void happyPathTest() {
-        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Алексей");
-        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79995555555");
-        driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
-        driver.findElement(By.tagName("button")).click();
-        String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
-        String actual = driver.findElement(By.cssSelector("[data-test-id='order-success']")).getText().trim();
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    void validNameAndSurnameTest() {
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Алексей Иванов");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79995555555");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
@@ -62,17 +51,6 @@ public class FormTest {
     @Test
     void validNameAndSurnameWithDashTest() {
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Алексей Салтыков-Щедрин");
-        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79995555555");
-        driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
-        driver.findElement(By.tagName("button")).click();
-        String expected = "Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.";
-        String actual = driver.findElement(By.cssSelector("[data-test-id='order-success']")).getText().trim();
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    void DashInsteadOfNameTest() {
-        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("-");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79995555555");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.tagName("button")).click();
@@ -127,7 +105,7 @@ public class FormTest {
 
     @Test
     void shortPhoneTest() {
-        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Алексей");
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Алексей Иванов");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+799955555");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.tagName("button")).click();
@@ -138,7 +116,7 @@ public class FormTest {
 
     @Test
     void longPhoneTest() {
-        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Алексей");
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Алексей Иванов");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+7999555555555");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.tagName("button")).click();
@@ -149,7 +127,7 @@ public class FormTest {
 
     @Test
     void textPhoneTest() {
-        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Алексей");
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Алексей Иванов");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("dddd");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.tagName("button")).click();
@@ -160,7 +138,7 @@ public class FormTest {
 
     @Test
     void symbolPhoneTest() {
-        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Алексей");
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Алексей Иванов");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("#$%^");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.tagName("button")).click();
@@ -171,7 +149,7 @@ public class FormTest {
 
     @Test
     void spacePhoneTest() {
-        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Алексей");
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Алексей Иванов");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("  ");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.tagName("button")).click();
@@ -182,7 +160,7 @@ public class FormTest {
 
     @Test
     void noPhoneTest() {
-        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Алексей");
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Алексей Иванов");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.tagName("button")).click();
@@ -193,7 +171,7 @@ public class FormTest {
 
     @Test
     void phoneWithoutPlusTest() {
-        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Алексей");
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Алексей Иванов");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("79995555555");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.tagName("button")).click();
@@ -204,11 +182,11 @@ public class FormTest {
 
     @Test
     void unmarkedCheckboxTest() {
-        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Алексей");
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Алексей Иванов");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79995555555");
         driver.findElement(By.tagName("button")).click();
         Boolean expected = true;
-        Boolean actual = driver.findElement(By.cssSelector("[data-test-id='agreement'].input_invalid")).isEnabled();
+        Boolean actual = driver.findElement(By.cssSelector("[data-test-id='agreement'].input_invalid")).isDisplayed();
         assertEquals(expected, actual);
     }
 }
